@@ -82,7 +82,7 @@ class ChildStorage
 
         if (id < this.storage.length && id >= 0)
         {
-            this.storage.slice(id, 1); //Начиная с позиции id удаляем 1 элемент
+            this.storage.splice(id, 1); // Начиная с позиции id удаляем 1 элемент
             answer = 1;
         }
 
@@ -146,8 +146,14 @@ myStorage.Create(new Child("gf", 1));
 myStorage.Create(new Child("A", 2));
 myStorage.Create(new Child("Afim", 30));
 
+myStorage.ShowAll();
+//myStorage.Update(2, new Child("Afiming", 22));
+//console.log(myStorage.Read(2));
+console.log(myStorage.Delete(2));
+console.log();
 
-//console.log(myStorage.Update(0, new Child("Afimin", 22)));
+myStorage.ShowAll();
+
 //console.log(myStorage.Read(0));
 
 //console.log(myStorage.Delete(0));
@@ -163,7 +169,7 @@ myStorage.Create(new Child("Afim", 30));
 
 //console.log(myStorage.GetChildrenByLenSecondName(1));
 
-console.log(myStorage.GetChildrenByVowelSecondName());
+//console.log(myStorage.GetChildrenByVowelSecondName());
 
 
 //myStorage.ShowAll();
