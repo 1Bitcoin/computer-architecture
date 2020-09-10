@@ -1,7 +1,5 @@
 "use strict";
 
-let storage = [];
-
 class Child
 {
     constructor(secondName, age) 
@@ -139,7 +137,7 @@ class ChildStorage
     }
 }
 
-let myStorage = new ChildStorage(storage);
+let myStorage = new ChildStorage([]);
 
 myStorage.Create(new Child("Afimin", 12));
 myStorage.Create(new Child("gf", 1));

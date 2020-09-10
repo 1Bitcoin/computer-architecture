@@ -1,7 +1,5 @@
 "use strict";
 
-//let storage = [];
-
 class Student
 {
     constructor(groupName, numberTicket, programmingRate) 
