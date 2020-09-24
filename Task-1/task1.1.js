@@ -133,7 +133,7 @@ class ChildStorage
 
     GetChildrenByVowelSecondName()
     {
-        return this.storage.filter(s => s.secondName.search(/^[euioa]/i) != -1);
+        return this.storage.filter(s => s.secondName.search(/^[euioay]/i) != -1);
     }
 }
 
