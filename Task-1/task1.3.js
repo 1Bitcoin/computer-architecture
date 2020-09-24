@@ -91,18 +91,22 @@ class PointStorage
             return answer;
 
         let maxDistance = 0;
+        let distance = 0;
 
-        for (let i = 0; i < this.storage.length - 1; i++)
+        for (let i = 0; i < this.storage.length; i++)
         {
-            let distance = this.GetDistance(this.storage[i], this.storage[i + 1]);
-
-            if (distance > maxDistance)
+            for (let j = 0; j < this.storage.length; j++)
             {
-                answer = [];
-                maxDistance = distance;
-                answer.push(this.storage[i]);
-                answer.push(this.storage[i + 1]);
-            }
+                distance = this.GetDistance(this.storage[i], this.storage[j]);
+
+                if (distance > maxDistance)
+                {
+                    answer = [];
+                    maxDistance = distance;
+                    answer.push(this.storage[i]);
+                    answer.push(this.storage[j]);
+                }
+            }        
         }
 
         return answer;

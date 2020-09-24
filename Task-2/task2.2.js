@@ -17,46 +17,56 @@ class Triangle
             this.lengthB + this.lengthC > this.lengthA + eps)
         {
             console.log("It's triangle exist");
+            return 1;
         }
         else
         {
             console.log("it's triangle doesn't exist");
+            return 0;
 
         }
     }
 
     GetPerimetr()
     {
-        return this.lengthA + this.lengthB + this.lengthC;
+        if (CheckTriangle)
+            return this.lengthA + this.lengthB + this.lengthC;
     }
 
     GetSquare()
     {
-        let p = (this.lengthA + this.lengthB + this.lengthC) / 2;
-        return Math.sqrt(p * (p - this.lengthA) * (p - this.lengthB) * (p - this.lengthC));
+        if (CheckTriangle)
+        {
+            let p = (this.lengthA + this.lengthB + this.lengthC) / 2;
+            return Math.sqrt(p * (p - this.lengthA) * (p - this.lengthB) * (p - this.lengthC));
+        }
     }
 
     CheckSquareness()
     {
-        let eps = 1e-9;
-
-        let cosA = (this.lengthA * this.lengthA + this.lengthC * this.lengthC - this.lengthB * this.lengthB) /
-        2 * this.lengthA * this.lengthC;
-
-        let cosB = (this.lengthA * this.lengthA + this.lengthB * this.lengthB - this.lengthC * this.lengthC) /
-        2 * this.lengthA * this.lengthB;
-
-        let cosC = (this.lengthB * this.lengthB + this.lengthC * this.lengthC - this.lengthA * this.lengthA) /
-        2 * this.lengthB * this.lengthC;
-
-        if (Math.abs(cosA) < eps || Math.abs(cosB) < eps || Math.abs(cosC) < eps)
+        if (CheckTriangle)
         {
-            console.log("Rectangular triangle");
+            let eps = 1e-9;
+
+            let cosA = (this.lengthA * this.lengthA + this.lengthC * this.lengthC - this.lengthB * this.lengthB) /
+            2 * this.lengthA * this.lengthC;
+    
+            let cosB = (this.lengthA * this.lengthA + this.lengthB * this.lengthB - this.lengthC * this.lengthC) /
+            2 * this.lengthA * this.lengthB;
+    
+            let cosC = (this.lengthB * this.lengthB + this.lengthC * this.lengthC - this.lengthA * this.lengthA) /
+            2 * this.lengthB * this.lengthC;
+    
+            if (Math.abs(cosA) < eps || Math.abs(cosB) < eps || Math.abs(cosC) < eps)
+            {
+                console.log("Rectangular triangle");
+            }
+            else
+            {
+                console.log("Not rectangular triangle");
+            }
         }
-        else
-        {
-            console.log("Not rectangular triangle");
-        }
+
     }
 }
 
@@ -75,4 +85,5 @@ console.log(myTriangle1.GetSquare());
 
 myTriangle.CheckSquareness();
 myTriangle1.CheckSquareness();
+console.
 myTriangle2.CheckSquareness();
