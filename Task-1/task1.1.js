@@ -133,7 +133,7 @@ class ChildStorage
 
     GetChildrenByVowelSecondName()
     {
-        return this.storage.filter(s => s.secondName.search(/^[euioay]/i) != -1);
+        return this.storage.filter(s => s.secondName.search(/^[euioayEYUIOA]/i) != -1);
     }
 }
 
@@ -144,30 +144,28 @@ myStorage.Create(new Child("gf", 1));
 myStorage.Create(new Child("A", 2));
 myStorage.Create(new Child("Afim", 30));
 
+console.log("show all");
 myStorage.ShowAll();
-//myStorage.Update(2, new Child("Afiming", 22));
-//console.log(myStorage.Read(2));
-console.log(myStorage.Delete(2));
+console.log("update id = 2");
+
+myStorage.Update(2, new Child("Afiming", 22));
+console.log("show all");
+myStorage.ShowAll();
+console.log("read[2] = ", myStorage.Read(2));
+console.log("delete[2] = ", myStorage.Delete(2));
+console.log("show all");
+myStorage.ShowAll();
+
+console.log("Read[0]=", myStorage.Read(0));
 console.log();
 
-myStorage.ShowAll();
+console.log("GetInfoByMaxAge ", myStorage.GetInfoByMaxAge());
+console.log("GetChildrenByAge ", myStorage.GetChildrenByAge(1, 2));
 
-//console.log(myStorage.Read(0));
-
-//console.log(myStorage.Delete(0));
-//console.log(myStorage.Delete(0));
-
-//console.log(myStorage.Read(0));
-
-//console.log(myStorage.GetInfoByMaxAge());
-//console.log(myStorage.GetChildrenByAge(1, 2));
-
-//console.log(myStorage.GetChildrenBySecondName("s"));
-//console.log(myStorage.GetChildrenBySecondName("A"));
-
-//console.log(myStorage.GetChildrenByLenSecondName(1));
-
-//console.log(myStorage.GetChildrenByVowelSecondName());
+console.log("GetChildrenBySecondName ", myStorage.GetChildrenBySecondName("gf"));
 
 
-//myStorage.ShowAll();
+console.log("GetChildrenByLenSecondName ", myStorage.GetChildrenByLenSecondName(2));
+
+console.log("GetChildrenByVowelSecondName ", myStorage.GetChildrenByVowelSecondName());
+

@@ -229,31 +229,31 @@ myStorage.Create(new Point("bad", -1, 0));
 myStorage.Create(new Point("happy", 1, 1));
 myStorage.Create(new Point("invisible", 20, 20));
 
-
+console.log("show all");
 myStorage.ShowAll();
 
-console.log(myStorage.GetPointsWithMaxDistance());
+console.log("GetPointsWithMaxDistance ", myStorage.GetPointsWithMaxDistance());
 
 console.log();
 
-console.log(myStorage.GetPointCertainDistance(100, new Point("test", 0, 0)));
-console.log(myStorage.GetPointCertainDistance(2, new Point("test", 0, 0)));
+console.log("GetPointCertainDistance (100, new Point('test', 0, 0)) = ", 
+                    myStorage.GetPointCertainDistance(100, new Point("test", 0, 0)));
+console.log("GetPointCertainDistance(2, new Point('test', 0, 0)) = ", 
+                    myStorage.GetPointCertainDistance(2, new Point("test", 0, 0)));
 
 console.log();
 
-console.log(myStorage.GetPointsAlongAxis("X", "UP"));
+console.log("GetPointsAlongAxis('X', 'UP') = ", myStorage.GetPointsAlongAxis("X", "UP"));
 console.log();
 
-console.log(myStorage.GetPointsAlongAxis("X", "DOWN"));
+console.log("GetPointsAlongAxis(X, DOWN) = ", myStorage.GetPointsAlongAxis("X", "DOWN"));
 console.log();
 
-console.log(myStorage.GetPointsAlongAxis("Y", "RIGHT"));
+console.log("GetPointsAlongAxis(Y, RIGHT) = ", myStorage.GetPointsAlongAxis("Y", "RIGHT"));
 console.log();
 
-console.log(myStorage.GetPointsAlongAxis("Y", "LEFT"));
 
-console.log();
-
-console.log(myStorage.GetPointsInZone(new Point("test1", 0, 3), new Point("test2", 2, 0)));
+console.log("GetPointsInZone(new Point(test1, 0, 3), new Point(test2, 2, 0)) = ", 
+                     myStorage.GetPointsInZone(new Point("test1", 0, 3), new Point("test2", 2, 0)));
 
 console.log();

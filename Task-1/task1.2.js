@@ -144,20 +144,21 @@ myStorage.Create(new Student("IU7-53", 24, [4, 4, 5, 5, 5, 5]));
 myStorage.Create(new Student("IU7-52", 2, [3, 4, 5]));
 myStorage.Create(new Student("IU7-51", 23, []));
 
+console.log("show all");
 myStorage.ShowAll();
 
-console.log(myStorage.GetAverageRateStudent(2));
+console.log("GetAverageRateStudent id 2 = ", myStorage.GetAverageRateStudent(2));
 
+console.log("GetInfoByGroup IU7-54");
 console.log();
-
 myStorage.GetInfoByGroup("IU7-54");
 
 console.log();
 
-console.log(myStorage.GetStudentMaxNumberRate("IU7-54"));
+console.log("GetStudentMaxNumberRate IU7-54", myStorage.GetStudentMaxNumberRate("IU7-54"));
 
 console.log();
 
-console.log(myStorage.GetStudentZeroRate());
+console.log("GetStudentZeroRate ", myStorage.GetStudentZeroRate());
 
 console.log();
