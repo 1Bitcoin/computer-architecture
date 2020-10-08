@@ -1,14 +1,28 @@
 "use strict";
 
 const fs = require("fs");
+const readlineSync = require('readline-sync');
 
-const folder = "./";
+let folder = readlineSync.question("Input folder: ");
+//const folder = "C:/Users/zhigalkin/OneDrive/Desktop/t";
+
+let extensions = readlineSync.question("Input extensions: ");
 
 const arr = fs.readdirSync(folder);
 
-console.log("Length: " + arr.length);
+function getExtension(filename) 
+{
+    var i = filename.lastIndexOf('.');
+    return (i < 0) ? '' : filename.substr(i + 1);
+}
 
-for(let i = 0; i < arr.length; i++) {
+for (let i = 0; i < arr.length; i++)
+ {
     const fileName = arr[i];
-    console.log(fileName);
+    if (extensions.indexOf(getExtension(fileName)) != -1)
+    {
+        const directory = folder + "/" + fileName
+        let fileContent = fs.readFileSync(directory, "utf8");
+        console.log(fileContent);
+    }
 }

@@ -3,9 +3,12 @@
 const readlineSync = require('readline-sync');
 const fs = require("fs");
 
-const arr = [];
-
 let n = readlineSync.question("Input n: ");
+
+if (n <= 0)
+    return;
+    
+const arr = [];
 
 for (let j = 0; j < n; j++)
 {
