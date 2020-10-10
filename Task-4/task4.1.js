@@ -31,16 +31,16 @@ app.get("/calculate/max", function(request, response)
     const b = request.query.second;
     const c = request.query.third;
 
-    if (a == null || b == null || c == null)
+    const aInt = parseInt(a);
+    const bInt = parseInt(b);
+    const cInt = parseInt(c);
+
+    if (aInt == null || bInt == null || cInt == null)
     {
         response.end(answerJSON);
     }
     else
     {   
-        const aInt = parseInt(a);
-        const bInt = parseInt(b);
-        const cInt = parseInt(c);
-
         const maxElem = Math.max(aInt, bInt, cInt);
 
         answerJSON = JSON.stringify({result: maxElem});
