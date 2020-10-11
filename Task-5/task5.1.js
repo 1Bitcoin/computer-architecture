@@ -34,6 +34,9 @@ function checkRepetitions(request, response)
         response.json(JSON.stringify({result: "Don't save content (repetitions)"}));       
     }   
 }
+
+const way = __dirname + "/static";
+app.use(express.static(way));
   
 app.get("/", function(request, response){
       

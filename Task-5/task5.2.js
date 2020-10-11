@@ -36,9 +36,12 @@ function checkInformation(request, response)
         response.json(JSON.stringify({result: "Information not found"}));       
     }   
 }
-  
+
+const way = __dirname + "/static";
+app.use(express.static(way));
+
 app.get("/", function(request, response){
       
     response.sendFile(__dirname + "/static/task5.2.html");
+
 });
-  
