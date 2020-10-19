@@ -1,0 +1,1 @@
+"<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Get array</title></head><body><form method=\"GET\" action=\"/my/url\"><p>Введитеage</p> <input name=agespellcheck=\"false\" autocomplete=\"off\"><input type=\"submit\" value=\"Отправить запрос\"></form></body></html>"

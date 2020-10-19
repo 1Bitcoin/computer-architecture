@@ -1,5 +1,5 @@
 "use strict";
-//todo
+
 const fs = require("fs");
 const express = require("express");
 
@@ -22,3 +22,32 @@ app.get("/me/page", function(request, response)
         response.end(contentString);
     }
 });
+
+app.get("/calculate/special", function(request, response) 
+{
+    var answerJSON = JSON.stringify({result: "badInput"});
+
+    let first = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Get array</title></head><body>';
+    let third = '</form></body></html>'
+    const url = request.query.url;
+    const name = request.query.name;
+
+    if (url == null || name == null)
+    {
+        response.end(answerJSON);
+    }
+    else
+    {   
+        let second = '<form method="GET" action=' + '"' + url + '"' +  '>' +  '<p>Введите ' + name + '</p>';
+        let sec1 = '<input name=' + name +  ' spellcheck="false" autocomplete="off">';
+        let sec2 = '<input type="submit" value="Отправить запрос">';
+        const jsonString = first + second + sec1 + sec2 + third;
+        const nameString = "html.html";
+
+        fs.writeFileSync(nameString, jsonString);
+
+        answerJSON = JSON.stringify({res: 0});
+        response.end(answerJSON);
+    }
+});
+

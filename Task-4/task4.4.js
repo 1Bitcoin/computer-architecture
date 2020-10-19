@@ -27,9 +27,8 @@ app.get("/calculate/special", function(request, response)
 {
     var answerJSON = JSON.stringify({result: "badInput"});
 
-    const a = request.query.first;
+    const url = request.query.first;
     const b = request.query.second;
-    const c = request.query.third;
 
     const aInt = parseInt(a);
     const bInt = parseInt(b);
