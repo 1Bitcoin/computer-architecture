@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Взаимодействие серверов</title>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Введите данные машины для добавления</h1>
+    <form name="newCarform">
+        <label>Car name</label></br>
+        <input type="text" name="carName" /></br></br>
+        <label>Car price</label></br>
+        <input type="text" name="carPrice" /></br></br>
+
+        <button type="submit" id="submitNewcar">Отправить</button>
+    </form>
+
+    <h1>Введите название машины для получения ее цены</h1>
+    <form name="selectCarform">
+        <label>Car name</label></br>
+        <input type="text" name="carName" /></br></br>
+
+        <button type="submit" id="submitSelectcar">Отправить</button>
+    </form>
+
+    <script src="/server-C-html-code.js"></script>
+</body>
+<html>

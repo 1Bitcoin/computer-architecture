@@ -1,0 +1,9 @@
+{"carname":"ff","carprice":"22"}
+{"carname":"mazda","carprice":"228"}
+{"carname":"mers","carprice":"22"}
+{"carname":"audi","carprice":"362346"}
+{"carname":"lada","carprice":"12"}
+{"carname":"d","carprice":"3"}
+{"carname":"d","carprice":"3"}
+{"carname":"d","carprice":"3"}
+{"carname":"dd","carprice":"345"}
