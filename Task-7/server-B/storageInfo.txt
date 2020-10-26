@@ -1,0 +1,4 @@
+
+{"storagename":"sklad","carsname":"bmw,mers,lada"}
+{"storagename":"new sklad","carsname":"bmw,mers,lada"}
+{"storagename":"garage","carsname":"porsche,bmw"}

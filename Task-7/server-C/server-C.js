@@ -35,7 +35,7 @@ function sendPost(url, body, callback) {
 }
 
 // принимаем GET запрос и отправляем POST запрос на другой сервер
-app.get("/redirect/insert/record", function(request, response) {
+app.get("/redirectA/insert/record", function(request, response) {
     const carName = request.query.carName;
     const carPrice = request.query.carPrice;
 
@@ -50,11 +50,45 @@ app.get("/redirect/insert/record", function(request, response) {
 });
 
 // принимаем GET запрос и отправляем POST запрос на другой сервер
-app.get("/redirect/select/record", function(request, response) {
+app.get("/redirectA/select/record", function(request, response) {
     const carName = request.query.carName;
 
     sendPost("http://localhost:5002/select/record", JSON.stringify({
         carname: carName
+        
+    }), function(answerString) {
+        const answerObject = JSON.parse(answerString);
+        const answer = answerObject.answer;
+        response.json(answerString);
+    });
+});
+
+// принимаем GET запрос и отправляем POST запрос на другой сервер
+app.get("/redirectB/insert/record", function(request, response) {
+    const storageName = request.query.storageName;
+    const carsName = request.query.carsName;
+
+    console.log(storageName, carsName);
+
+    sendPost("http://localhost:5000/insert/record", JSON.stringify({
+        storagename: storageName,
+        carsname: carsName
+        
+    }), function(answerString) {
+        const answerObject = JSON.parse(answerString);
+        const answer = answerObject.answer;
+        response.json(answerString);
+    });
+});
+
+// принимаем GET запрос и отправляем POST запрос на другой сервер
+app.get("/redirectB/select/record", function(request, response) {
+    const storageName = request.query.storageName;
+
+    console.log(storageName);
+
+    sendPost("http://localhost:5000/select/record", JSON.stringify({
+        storagename: storageName
         
     }), function(answerString) {
         const answerObject = JSON.parse(answerString);

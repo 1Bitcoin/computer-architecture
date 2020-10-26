@@ -7,3 +7,6 @@
 {"carname":"d","carprice":"3"}
 {"carname":"d","carprice":"3"}
 {"carname":"dd","carprice":"345"}
+{"carname":"porsche 911","carprice":"9000000"}
+{"carname":"porsche911","carprice":"9000000"}
+{"carname":"porsche_panamera","carprice":"228228228"}

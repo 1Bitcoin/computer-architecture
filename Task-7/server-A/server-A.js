@@ -57,27 +57,34 @@ app.post("/select/record", function(request, response) {
         let fileContent = fs.readFileSync("carInfo.txt", "utf8");
 
         let beginIndex = fileContent.indexOf(carName);
-        let i = beginIndex;
-        
-        while (fileContent[i] != "}")
+        let carprice = "Not found";
+
+        if (beginIndex != -1)
         {
-            i++;
-        }
 
-        let j = beginIndex;
         
-        while (fileContent[j] != "{")
-        {
-            j--;
+            let i = beginIndex;
+            
+            while (fileContent[i] != "}")
+            {
+                i++;
+            }
+
+            let j = beginIndex;
+            
+            while (fileContent[j] != "{")
+            {
+                j--;
+            }
+
+            let startIndex = j;
+            let endIndex = i;
+
+            let result = fileContent.slice(startIndex, endIndex + 1);
+
+            const answerObject = JSON.parse(result);
+            carprice = answerObject.carprice;
         }
-
-        let startIndex = j;
-        let endIndex = i;
-
-        let result = fileContent.slice(startIndex, endIndex + 1);
-
-        const answerObject = JSON.parse(result);
-        const carprice = answerObject.carprice;
 
         response.json(JSON.stringify({
             answer: carprice

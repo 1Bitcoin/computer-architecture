@@ -1,16 +1,16 @@
 "use strict";
 
-// импорт библиотек
+// импорт библиотеки
 const express = require("express");
-const request = require("request");
+const fs = require("fs");
 
 // запускаем сервер
 const app = express();
 const port = 5000;
 app.listen(port);
-console.log(`Server on port ${port}`);
+console.log("Server on port " + port);
 
-// заголовки в ответ клиенту
+// заголовки для ответа
 app.use(function(req, res, next) {
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -18,36 +18,70 @@ app.use(function(req, res, next) {
     next();
 });
 
-// функция для отправки POST запроса на другой сервер
-function sendPost(url, body, callback) {
-    // задаём заголовки
-    const headers = {};
-    headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
-    headers["Connection"] = "close";
-    // отправляем запрос
-    request.post({
-        url: url,
-        body: body,
-        headers: headers,
-    }, function (error, response, body) {
-        if(error) {
-            callback(null);
-        } else {
-            callback(body);
-        }
+// загрузка тела
+function loadBody(request, callback) {
+    let body = [];
+    request.on('data', (chunk) => {
+        body.push(chunk);
+    }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        callback(body);
     });
 }
 
-// принимаем GET запрос и отправляем POST запрос на другой сервер
-app.get("/sum", function(request, response) {
-    const a = request.query.a;
-    const b = request.query.b;
-    sendPost("http://localhost:5002/query/calculate", JSON.stringify({
-        x: a,
-        y: b
-    }), function(answerString) {
-        const answerObject = JSON.parse(answerString);
-        const answer = answerObject.answer;
-        response.end("Answer: " + answer);
+// приём запроса
+app.post("/insert/record", function(request, response) {
+    loadBody(request, function(body) {
+        const obj = JSON.parse(body);
+        const storageName = obj.storagename;
+        const carsName = obj.carsname;
+
+        console.log(storageName);
+        let carJson = JSON.stringify({
+            storagename: storageName, carsname: carsName
+        });
+
+        fs.appendFileSync("storageInfo.txt", "\n" + carJson);
+
+        response.json(JSON.stringify({
+            answer: "Storage added ok"
+        }));
     });
 });
+
+// приём запроса
+app.post("/select/record", function(request, response) {
+    loadBody(request, function(body) {
+        const obj = JSON.parse(body);
+        const storageName = obj.storagename;
+
+        let fileContent = fs.readFileSync("storageInfo.txt", "utf8");
+
+        let beginIndex = fileContent.indexOf(storageName);
+        let i = beginIndex;
+        
+        while (fileContent[i] != "}")
+        {
+            i++;
+        }
+
+        let j = beginIndex;
+        
+        while (fileContent[j] != "{")
+        {
+            j--;
+        }
+
+        let startIndex = j;
+        let endIndex = i;
+
+        let result = fileContent.slice(startIndex, endIndex + 1);
+        const answerObject = JSON.parse(result);
+        const carsName = answerObject.carsname;
+
+        response.json(JSON.stringify({
+            answer: carsName
+        }));
+    });
+});
+

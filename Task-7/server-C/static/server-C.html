@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <h1>Введите данные машины для добавления</h1>
+    <h3>Введите данные машины для добавления</h3>
     <form name="newCarform">
         <label>Car name</label></br>
         <input type="text" name="carName" /></br></br>
@@ -16,13 +16,32 @@
         <button type="submit" id="submitNewcar">Отправить</button>
     </form>
 
-    <h1>Введите название машины для получения ее цены</h1>
+    <h3>Введите название машины для получения ее цены</h3>
     <form name="selectCarform">
         <label>Car name</label></br>
         <input type="text" name="carName" /></br></br>
 
         <button type="submit" id="submitSelectcar">Отправить</button>
     </form>
+
+    <h3>Введите название склада и имена машин через запятую чтобы создать новый склад</h3>
+    <form name="newCarstorageForm">
+        <label>Storage name</label></br>
+        <input type="text" name="storageName" /></br></br>
+
+        <label>Cars name</label></br>
+        <input type="text" name="carsName" /></br></br>
+
+        <button type="submit" id="submitNewstorage">Отправить</button>
+    </form>
+
+    <h3>Введите название склада для получения информации о машинах находящихся в нем</h3>
+        <form name="selectCarstorageForm">
+            <label>Storage name</label></br>
+            <input type="text" name="storageName" /></br></br>
+    
+            <button type="submit" id="submitSelectstorage">Отправить</button>
+        </form>
 
     <script src="/server-C-html-code.js"></script>
 </body>
